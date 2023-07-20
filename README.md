@@ -1,6 +1,7 @@
 # Neil's Pin Board
-
-![](/demostrate.gif)
+<p align="center">
+    <img src="https://github.com/nycm1989/nPinBoard/blob/main/demostrate.gif?raw=true" alt="" style="width:300px;">
+</p>
 
 ## First
 
