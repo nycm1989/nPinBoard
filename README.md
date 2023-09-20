@@ -1,9 +1,16 @@
 # Neil's Pin Board
 <p align="center">
-    <img src="https://github.com/nycm1989/nPinBoard/blob/main/demostrate.gif?raw=true" alt="" style="width:300px;">
+    <img src="demostrate.gif?raw=true" alt="" style="width:300px;">
 </p>
 
-## First
+
+## Controller properties
+```dart
+nPinController.length -> int
+nPinController.isFull -> bool
+nPinController.inputs -> List<int>
+nPinController.reset()
+```
 
 1. Create a controller and add a listener
 
