@@ -25,6 +25,13 @@ class NPinController extends ChangeNotifier{
     notifyListeners();
   }
 
+  reset (){
+    _i = [];
+    _l = 6;
+    isFull  = false;
+    notifyListeners();
+  }
+
 
   NPinController({this.shuffle = false, this.hideInputs = false});
 }

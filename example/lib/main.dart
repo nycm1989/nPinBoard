@@ -42,9 +42,8 @@ class _MyAppState extends State<MyApp> {
         Column(
           children: [
             NPinBoard(
-              leftButtonTap   : () => debugPrint("hi"),
+              leftButtonTap   : () => nPinController.reset(),
               controller      : nPinController,
-              boardStyle      : BoardStyle(),
               pinInputStyle   :
               PinInputStyle()
                 ..height          = 40
@@ -74,7 +73,9 @@ class _MyAppState extends State<MyApp> {
                 ..rightIcon       = Icons.backspace_outlined,
             ),
             InkWell(
-              onTap: () => printControllerData(),
+              onTap: () {
+                printControllerData();
+              },
               child: const Text('Print controller data'),
             )
           ],

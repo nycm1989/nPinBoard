@@ -39,7 +39,7 @@ class _NPinBoardState extends State<NPinBoard> {
   late PinButtonStyle pinButtonStyle;
   late ButtonItem     selectedButton;
 
-  List<String>  values  = [];
+  // List<String>  values  = [];
 
   List<List<ButtonItem>> board = [
     [ButtonItem(button: Buttons.n1, value: '1'), ButtonItem(button: Buttons.n2, value: '2'), ButtonItem(button: Buttons.n3, value: '3')],
@@ -58,8 +58,8 @@ class _NPinBoardState extends State<NPinBoard> {
       pinButtonStyle  = widget.pinButtonStyle ??  PinButtonStyle();
       selectedButton  = ButtonItem(button: Buttons.none, value: '');
 
-      List<int> indexes = List.generate(widget.controller.length, (index) => index);
-      for (int i = 0; i < indexes.length; i++) { values.add(''); }
+      // List<int> indexes = List.generate(widget.controller.length, (index) => index);
+      // for (int i = 0; i < indexes.length; i++) { values.add(''); }
 
       if(widget.controller.shuffle) {
         List<ButtonItem> list = [];
@@ -130,7 +130,7 @@ class _NPinBoardState extends State<NPinBoard> {
             child   :
             Row(
               mainAxisAlignment : MainAxisAlignment.center,
-              children          : values.map((value) =>
+              children          : List.generate(widget.controller.length, (index) =>index <  widget.controller.inputs.length ? widget.controller.inputs[index].toString() : "").map((value) => //widget.controller.inputs.map((value) => // values.map((value) =>
                 AnimatedContainer(
                   duration    : pinInputStyle.duration,
                   padding     : pinInputStyle.padding,
@@ -180,13 +180,13 @@ class _NPinBoardState extends State<NPinBoard> {
                           if(button.button == Buttons.bb) {
                             if(widget.controller.inputs.isNotEmpty){
                               widget.controller.removeInput = button.value;
-                              values[widget.controller.inputs.length] = '';
+                              // values[widget.controller.inputs.length] = '';
                             }
                           }
                         } else {
                           if(widget.controller.inputs.length < widget.controller.length){
                             widget.controller.addInput = button.value;
-                            values[widget.controller.inputs.length - 1] = button.value;
+                            // values[widget.controller.inputs.length - 1] = button.value;
                           }
                         }
                       }),
