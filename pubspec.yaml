@@ -1,6 +1,6 @@
 name: n_pin_board
 description: Neil's Pin Board.
-version: 0.0.6
+version: 0.0.6+1
 homepage: https://github.com/nycm1989/nPinBoard
 
 environment:
