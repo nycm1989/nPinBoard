@@ -1,6 +1,6 @@
 name: n_pin_board
 description: Configurable and easy-to-use cross-platform pin board.
-version: 0.0.6+3
+version: 0.0.6+4
 
 homepage: https://github.com/nycm1989/nPinBoard
 repository: https://github.com/nycm1989/nPinBoard
@@ -28,21 +28,21 @@ screenshots:
   - description: 'Loaded image screenshot'
     path: screens/1.png
 
-flutter:
-  plugin:
-    platforms:
-      android:
-        package: me.neil.npinboard
-        pluginClass: NPinBoard
-      ios:
-        pluginClass: NPinBoard
-      macos:
-        pluginClass: NPinBoard
-      web:
-        pluginClass: NPinBoard
-        fileName: n_pin_board.dart
-      windows:
-        pluginClass: NPinBoardApi
+# flutter:
+#   plugin:
+#     implements: hello
+#     platforms:
+#       android:
+#         pluginClass: NPinBoard
+#       ios:
+#         pluginClass: NPinBoard
+#       macos:
+#         pluginClass: NPinBoard
+#       web:
+#         pluginClass: NPinBoard
+#         fileName: n_pin_board.dart
+#       windows:
+#         pluginClass: NPinBoardApi
 
 # https://flutter.dev/docs/development/packages-and-plugins/developing-packages#plugin-platforms
 # dart pub publish --dry-run
