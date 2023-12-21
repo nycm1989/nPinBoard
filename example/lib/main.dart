@@ -42,7 +42,7 @@ class _MyAppState extends State<MyApp> {
         Column(
           children: [
             NPinBoard(
-              leftButtonTap   : () => nPinController.reset(),
+              // leftButtonTap   : () => nPinController.reset(),
               controller      : nPinController,
               pinInputStyle   :
               PinInputStyle()

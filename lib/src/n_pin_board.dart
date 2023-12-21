@@ -190,8 +190,25 @@ class _NPinBoardState extends State<NPinBoard> {
                           }
                         }
                       }),
-                      child:
-                      AnimatedContainer(
+                      child: widget.leftButtonTap == null && button.button == Buttons.bf
+                      ? Container(
+                        width: button.button == selectedButton.button
+                          ? pinButtonStyle.overWidth ?? pinButtonStyle.width
+                          : pinButtonStyle.width,
+                        height: button.button == selectedButton.button
+                          ? pinButtonStyle.overHeight ?? pinButtonStyle.height
+                          : pinButtonStyle.height,
+                        padding: button.button == selectedButton.button
+                          ? pinButtonStyle.overPadding ?? pinButtonStyle.padding
+                          : pinButtonStyle.padding,
+                        margin: button.button == selectedButton.button
+                          ? pinButtonStyle.overMargin ?? pinButtonStyle.margin
+                          : pinButtonStyle.margin,
+                        alignment: button.button == selectedButton.button
+                          ? pinButtonStyle.overAlignment ?? pinButtonStyle.alignment
+                          : pinButtonStyle.alignment,
+                      )
+                      : AnimatedContainer(
                         duration: pinButtonStyle.duration,
                         width: button.button == selectedButton.button
                           ? pinButtonStyle.overWidth ?? pinButtonStyle.width
