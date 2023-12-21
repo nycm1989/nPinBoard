@@ -97,7 +97,7 @@ class _NPinBoardState extends State<NPinBoard> {
       }
 
     });
-    widget.controller.addListener(()=> setState(() {}));
+    // widget.controller.addListener(()=> setState(() {}));
   }
 
   @override
