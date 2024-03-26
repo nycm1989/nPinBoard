@@ -14,21 +14,21 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   NPinController nPinController = NPinController(
-    shuffle   : true,
-    hideInputs: false
+    shuffle : false,
+    length  : 6
   );
-
-  printControllerData(){
-    debugPrint('========================');
-    debugPrint('Inputs: ${nPinController.inputs.join(', ')}');
-    debugPrint('Length: ${nPinController.length}');
-    debugPrint('isFull: ${nPinController.isFull}');
-  }
 
   @override
   void initState() {
     super.initState();
-    nPinController.addListener(()=> printControllerData());
+    nPinController.addListener(() => setState(() {}));
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    nPinController.removeListener(() { });
+    nPinController.dispose();
   }
 
   @override
@@ -39,46 +39,84 @@ class _MyAppState extends State<MyApp> {
       title : 'Pin Board Example',
       home  : Scaffold(
         body:
-        Column(
-          children: [
-            NPinBoard(
-              // leftButtonTap   : () => nPinController.reset(),
-              controller      : nPinController,
-              pinInputStyle   :
-              PinInputStyle()
-                ..height          = 40
-                ..width           = 40
-                ..borderWidth     = 1
-                ..borderColor     = Colors.green
-                ..emptyBackground = Colors.grey.withOpacity(0.5)
-                ..textStyle       = const TextStyle(fontSize: 20, color: Colors.black)
-                ..borderRadius    = const Radius.circular(20),
-              pinButtonStyle :
-              PinButtonStyle()
-                ..height          = 70
-                ..overHeight      = 75
-                ..width           = 70
-                ..overWidth       = 75
-                ..borderWidth     = 1
-                ..borderColor     = Colors.grey
-                ..overBorderColor = Colors.red
-                ..overBackground  = Colors.red
-                ..overAlignment   = Alignment.topCenter
-                ..borderRadius    = const Radius.circular(20)
-                ..iconStyle       = PinIconStyle(color: Colors.blue,  size: 20)
-                ..iconOverStyle   = PinIconStyle(color: Colors.white, size: 15)
-                ..numberStyle     = const TextStyle( fontSize: 15, color: Colors.grey  )
-                ..numberOverStyle = const TextStyle( fontSize: 20, color: Colors.white )
-                ..leftIcon        = Icons.abc
-                ..rightIcon       = Icons.backspace_outlined,
-            ),
-            InkWell(
-              onTap: () {
-                printControllerData();
-              },
-              child: const Text('Print controller data'),
-            )
-          ],
+        Center(
+          child:
+          Column(
+            mainAxisAlignment : MainAxisAlignment.center,
+            children          : [
+              NPinBoard(
+                buttonsMargin : const EdgeInsets.symmetric(vertical: 20),
+                controller    : nPinController,
+                input         :
+                PinInput(
+                  textStyle: TextStyle(fontSize: 25),
+                  settings:
+                  InputSettings(
+                    margin  : const EdgeInsets.symmetric(horizontal: 1),
+                    padding : const EdgeInsets.symmetric(vertical: 5),
+                    border  : Border(bottom: BorderSide(color: Colors.grey.shade300))
+                  ),
+                  onFilledSettings:
+                  InputSettings(
+                    border  : Border(bottom: BorderSide(color: Colors.black))
+                  ),
+                ),
+                button        :
+                PinButton(
+                  textStyle :
+                  TextStyle(
+                    color     : Colors.black,
+                    fontSize  : 18,
+                    shadows   : [BoxShadow(color: Colors.grey, blurRadius: 1)]
+                  ),
+                  onHoverTextStyle :
+                  TextStyle(
+                    color       : Colors.white,
+                    fontSize    : 24,
+                    fontWeight  : FontWeight.w500,
+                    shadows     : [BoxShadow(color: Colors.black, blurRadius: 2)]
+                  ),
+                  settings:
+                  ButtonSettings(
+                    width       : 60,
+                    height      : 60,
+                    margin      : EdgeInsets.all(10),
+                    color       : Colors.transparent,
+                    borderRadius: BorderRadius.circular(50),
+                    shadow      :
+                    BoxShadow(
+                      color      : Colors.black45,
+                      blurRadius : 5,
+                      blurStyle  : BlurStyle.outer
+                    )
+                  ),
+                  onHoverSettings:
+                  ButtonSettings(
+                    color       : Colors.red,
+                    borderRadius: BorderRadius.circular(10),
+                  )
+                ),
+                leftIcon  :
+                PinIcon(
+                  // onTap             : () async => await Future.delayed(Duration(seconds: 2), ()=> print(nPinController.value)),
+                  onTap             : () => nPinController.clear(),
+                  icon              : Icons.fingerprint,
+                  onHoverIconStyle  : IconStyle(color: Colors.white, shadows: [BoxShadow(color: Colors.black, blurRadius: 10)]),
+                ),
+                rightIcon :
+                PinIcon(
+                  onTap            : () => nPinController.removeLast(),
+                  icon             : Icons.remove,
+                  onHoverIcon      : Icons.ac_unit_sharp,
+                  iconStyle        : IconStyle(color: Colors.black, shadows: [BoxShadow(color: Colors.blue, blurRadius: 10)]),
+                  onHoverIconStyle : IconStyle(color: Colors.white, shadows: [BoxShadow(color: Colors.black, blurRadius: 10)]),
+                )
+              ),
+              if ( nPinController.isEmpty ) Text("Is empty"),
+              if ( nPinController.isFull  ) Text("Is full" ),
+              if ( !nPinController.isEmpty && !nPinController.isFull  ) Text("value: " + nPinController.value)
+            ],
+          ),
         ),
       ),
     );

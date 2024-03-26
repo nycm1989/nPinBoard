@@ -1,3 +1,6 @@
+## 1.0.0
+* All new logic
+
 ## 0.0.6+6
 * remove error listener
 
