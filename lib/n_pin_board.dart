@@ -25,6 +25,7 @@ export '/src/models.dart';
 /// -[rightIcon] Right action icon configuration and tap sync/async function
 class NPinBoard extends StatefulWidget {
   final NPinController       controller;
+  final bool                 showInputs;
   final BoxDecoration      ? buttonsDecoration;
   final BoxDecoration      ? inputsDecoration;
   final EdgeInsetsGeometry ? buttonsMargin;
@@ -38,6 +39,7 @@ class NPinBoard extends StatefulWidget {
 
   NPinBoard({
     required this.controller,
+    this.showInputs = true,
     this.buttonsDecoration,
     this.inputsDecoration,
     this.buttonsMargin,
@@ -77,6 +79,7 @@ class _NPinBoardState extends State<NPinBoard> {
       mainAxisAlignment  : MainAxisAlignment.center,
       crossAxisAlignment : CrossAxisAlignment.center,
       children: [
+        if(widget.showInputs)
         Container(
           decoration : widget.inputsDecoration,
           margin     : widget.inputsMargin,

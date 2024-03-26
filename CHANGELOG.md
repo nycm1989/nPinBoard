@@ -1,3 +1,6 @@
+## 1.0.2
+* Show inputs option added
+
 ## 1.0.1
 * All new logic
 * Readme updated

@@ -8,6 +8,8 @@
 NPinBoard(
     /// Required class controller
     controller          -> NPinController
+    /// Show or Hide inputs row
+    showInputs          -> bool
     /// Decoration for buttons container
     buttonsDecoration   -> BoxDecoration
     /// Decoration for inputs container
