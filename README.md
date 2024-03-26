@@ -1,6 +1,6 @@
 # Neil's Pin Board
 <p align="center">
-    <img src="https://github.com/nycm1989/nPinBoard/blob/main/demostrate.gif?raw=true" alt="" style="width:300px;">
+    <img src="https://github.com/nycm1989/nPinBoard/blob/main/screens/demostrate.gif?raw=true" alt="" style="width:250px;">
 </p>
 
 ## Widget properties
